@@ -9,7 +9,7 @@ from BrandrdXMusic.utils.extraction import extract_user
 from config import BANNED_USERS
 
 
-@app.on_message(filters.command(["block"]) & SUDOERS)
+@app.on_message(filters.command(["block"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]) & SUDOERS)
 @language
 async def useradd(client, message: Message, _):
     if not message.reply_to_message:
