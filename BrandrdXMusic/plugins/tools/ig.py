@@ -4,7 +4,7 @@ from pyrogram import filters
 from BrandrdXMusic import app
 
 
-@app.on_message(filters.command(["ig", "instagram", "reel"]))
+@app.on_message(filters.command(["ig", "instagram", "reel"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def download_instagram_video(client, message):
     if len(message.command) < 2:
         await message.reply_text(
