@@ -243,7 +243,7 @@ async def play_playlist(client, CallbackQuery, _):
 
 
 @app.on_message(
-    filters.command(["playplaylist", "vplayplaylist"]) & ~BANNED_USERS & filters.group
+    filters.command(["playplaylist", "vplayplaylist"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]) & ~BANNED_USERS & filters.group
 )
 @languageCB
 async def play_playlist_command(client, message, _):
