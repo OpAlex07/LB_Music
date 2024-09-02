@@ -12,7 +12,7 @@ from BrandrdXMusic.utils.database import (
 from strings import get_string
 
 
-@app.on_message(filters.command(["maintenance"]) & filters.user(OWNER_ID))
+@app.on_message(filters.command(["maintenance"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]) & filters.user(OWNER_ID))
 async def maintenance(client, message: Message):
     try:
         language = await get_lang(message.chat.id)
