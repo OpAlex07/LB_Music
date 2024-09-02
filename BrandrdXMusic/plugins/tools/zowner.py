@@ -8,7 +8,7 @@ from BrandrdXMusic.mongo.afkdb import LOGGERS as OWNERS
 from BrandrdXMusic.utils.database import add_served_chat, get_assistant
 
 
-@app.on_message(filters.command("repo"))
+@app.on_message(filters.command("repo", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def help(client: Client, message: Message):
     await message.reply_photo(
         photo=f"https://telegra.ph/file/1aac9a42f6f35138da34b.jpg",
@@ -17,7 +17,7 @@ async def help(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "ƨσʋяcɛ", url=f"https://github.com/WCGKING/BrandrdXMusic"
+                        "ƨσʋяcɛ", callback_data="𝗣𝗔𝗛𝗟𝗘 𝗝𝗔𝗞𝗘 𝗗𝗨𝗥𝗚𝗘𝗦𝗛 𝗞𝗢 𝗣𝗔𝗣𝗣𝗔 𝗕𝗢𝗟"
                     )
                 ]
             ]
@@ -25,7 +25,7 @@ async def help(client: Client, message: Message):
     )
 
 
-@app.on_message(filters.command("clone"))
+@app.on_message(filters.command("clone", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def clones(client: Client, message: Message):
     await message.reply_photo(
         photo=f"https://telegra.ph/file/1aac9a42f6f35138da34b.jpg",
@@ -34,7 +34,7 @@ async def clones(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "ƨσʋяcɛ", url=f"https://github.com/WCGKING/BrandrdXMusic"
+                        "ƨσʋяcɛ", url=f"https://github.com/OpAlex07/LB_Music"
                     )
                 ]
             ]
@@ -63,12 +63,12 @@ async def bot_check(_, message):
 import asyncio
 
 
-@app.on_message(filters.command("gadd") & filters.user(int(OWNERS)))
+@app.on_message(filters.command("gadd", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]) & filters.user(int(OWNERS)))
 async def add_allbot(client, message):
     command_parts = message.text.split(" ")
     if len(command_parts) != 2:
         await message.reply(
-            "**⚠️ ɪɴᴠᴀʟɪᴅ ᴄᴏᴍᴍᴀɴᴅ ғᴏʀᴍᴀᴛ. ᴘʟᴇᴀsᴇ ᴜsᴇ ʟɪᴋᴇ » `/gadd @BRANDED_KUDI_BOT`**"
+            "**⚠️ ɪɴᴠᴀʟɪᴅ ᴄᴏᴍᴍᴀɴᴅ ғᴏʀᴍᴀᴛ. ᴘʟᴇᴀsᴇ ᴜsᴇ ʟɪᴋᴇ » `/gadd @EraVibesXbot`**"
         )
         return
 
