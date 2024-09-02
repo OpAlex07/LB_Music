@@ -7,7 +7,7 @@ from telegraph import upload_file
 from BrandrdXMusic import app
 
 
-@app.on_message(filters.command(["tgm", "tgt", "telegraph", "tl"]))
+@app.on_message(filters.command(["tgm", "tgt", "telegraph", "tl"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def get_link_group(client, message):
     if not message.reply_to_message:
         return await message.reply_text(
