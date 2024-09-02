@@ -157,7 +157,7 @@ VC_TAG = [" **⚘ আমাকে ভুলে যাও...💥**",
         ]
 
 
-@app.on_message(filters.command(["entag", "englishtag" ], prefixes=["/", "@", "#"]))
+@app.on_message(filters.command(["entag", "englishtag" ], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def mentionall(client, message):
     chat_id = message.chat.id
     if message.chat.type == ChatType.PRIVATE:
@@ -217,7 +217,7 @@ async def mentionall(client, message):
         pass
 
 
-@app.on_message(filters.command(["bntag"], prefixes=["/", "@", "#"]))
+@app.on_message(filters.command(["bntag"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def mention_allvc(client, message):
     chat_id = message.chat.id
     if message.chat.type == ChatType.PRIVATE:
@@ -262,7 +262,7 @@ async def mention_allvc(client, message):
 
 
 
-@app.on_message(filters.command(["cancel", "enstop", "bnstop"]))
+@app.on_message(filters.command(["cancel", "enstop", "bnstop"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 async def cancel_spam(client, message):
     if not message.chat.id in spam_chats:
         return await message.reply("๏ ᴄᴜʀʀᴇɴᴛʟʏ ɪ'ᴍ ɴᴏᴛ ᴛᴀɢɢɪɴɢ ʙᴀʙʏ.")
