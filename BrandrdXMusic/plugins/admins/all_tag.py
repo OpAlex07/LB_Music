@@ -81,7 +81,7 @@ async def tag_all_users(_, message):
             "cancelall",
             "allcancel",
         ],
-        , prefixes=["/", "!", "%", ",", "-", ".", "@", "#"],
+         prefixes=["/", "!", "%", ",", "-", ".", "@", "#"],
     )
     & admin_filter
 )
