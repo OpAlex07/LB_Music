@@ -12,7 +12,7 @@ from BrandrdXMusic.utils.database import (
 )
 
 
-@app.on_message(filters.command(["activevc", "activevoice","vc"]) & OWNER_ID)
+@app.on_message(filters.command(["activevc", "activevoice"]) & filters.user(OWNER_ID))
 async def activevc(_, message: Message):
     mystic = await message.reply_text("» ɢᴇᴛᴛɪɴɢ ᴀᴄᴛɪᴠᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛs ʟɪsᴛ...")
     served_chats = await get_active_chats()
@@ -27,10 +27,10 @@ async def activevc(_, message: Message):
         try:
             if (await app.get_chat(x)).username:
                 user = (await app.get_chat(x)).username
-                text += f"<b>{j + 1}.</b> <a href=https://t.me/{user}>{unidecode(title).upper()}</a>\n"
+                text += f"<b>{j + 1}.</b> <a href=https://t.me/{user}>{unidecode(title).upper()}</a> [<code>{x}</code>]\n"
             else:
                 text += (
-                    f"<b>{j + 1}.</b> {unidecode(title).upper()}\n"
+                    f"<b>{j + 1}.</b> {unidecode(title).upper()} [<code>{x}</code>]\n"
                 )
             j += 1
         except:
@@ -44,7 +44,7 @@ async def activevc(_, message: Message):
         )
 
 
-@app.on_message(filters.command(["activev", "activevideo","vvc"]) & OWNER_ID)
+@app.on_message(filters.command(["activev", "activevideo"]) & filters.user(OWNER_ID))
 async def activevi_(_, message: Message):
     mystic = await message.reply_text("» ɢᴇᴛᴛɪɴɢ ᴀᴄᴛɪᴠᴇ ᴠɪᴅᴇᴏ ᴄʜᴀᴛs ʟɪsᴛ...")
     served_chats = await get_active_video_chats()
@@ -74,18 +74,3 @@ async def activevi_(_, message: Message):
             f"<b>» ʟɪsᴛ ᴏғ ᴄᴜʀʀᴇɴᴛʟʏ ᴀᴄᴛɪᴠᴇ ᴠɪᴅᴇᴏ ᴄʜᴀᴛs :</b>\n\n{text}",
             disable_web_page_preview=True,
         )
-
-@app.on_message(filters.command(["ac", "av"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]) & filters.user(OWNER_ID))
-async def start(client: Client, message: Message):
-    try:
-        ac_audio = str(len(await get_active_chats()))
-        ac_video = str(len(await get_active_video_chats()))
-        await message.reply_text(
-            f"✫ <b><u>ᴀᴄᴛɪᴠᴇ ᴄʜᴀᴛs ɪɴғᴏ</u></b> :\n\nᴠᴏɪᴄᴇ : {ac_audio}\nᴠɪᴅᴇᴏ  : {ac_video}",
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('✯ ᴄʟᴏsᴇ ✯', callback_data="close")]])
-        )
-    except Exception as e:
-        await message.reply_text(f"An error occurred: {str(e)}")
-
-if __name__ == "active.py":
-    app.run()
