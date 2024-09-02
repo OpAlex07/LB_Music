@@ -77,9 +77,15 @@ async def activevi_(_, message: Message):
 
 @app.on_message(filters.command(["ac", "av"], prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]) & filters.user(OWNER_ID))
 async def start(client: Client, message: Message):
-    ac_audio = str(len(await get_active_chats()))
-    ac_video = str(len(await get_active_video_chats()))
-    await message.reply_text(
-        f"✫ <b><u>ᴀᴄᴛɪᴠᴇ ᴄʜᴀᴛs ɪɴғᴏ</u></b> :\n\nᴠᴏɪᴄᴇ : {ac_audio}\nᴠɪᴅᴇᴏ  : {ac_video}",
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('✯ ᴄʟᴏsᴇ ✯', callback_data="close")]])
-    )
+    try:
+        ac_audio = str(len(await get_active_chats()))
+        ac_video = str(len(await get_active_video_chats()))
+        await message.reply_text(
+            f"✫ <b><u>ᴀᴄᴛɪᴠᴇ ᴄʜᴀᴛs ɪɴғᴏ</u></b> :\n\nᴠᴏɪᴄᴇ : {ac_audio}\nᴠɪᴅᴇᴏ  : {ac_video}",
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('✯ ᴄʟᴏsᴇ ✯', callback_data="close")]])
+        )
+    except Exception as e:
+        await message.reply_text(f"An error occurred: {str(e)}")
+
+if __name__ == "active.py":
+    app.run()
