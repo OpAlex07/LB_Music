@@ -2,7 +2,7 @@ from BrandrdXMusic import app
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-@app.on_message(filters.command("id"))
+@app.on_message(filters.command("id", prefixes=["/", "!", "%", ",", "-", ".", "@", "#"]))
 def ids(_, message):
     reply = message.reply_to_message
     if reply:
